@@ -1,7 +1,26 @@
-//@import "fonts";
+@import 'standart/reset';
+@import 'standart/mixins';
+@import 'standart/variables';
+
+//libs
+@import 'lib/custom-select';
+
+//common classes
+@import 'global';
+
+//blocks
+@import 'header';
+@import 'footer';
+@import 'list';
 
 
-body{
-	background: url('@img/cover.jpg');
-}
+//sections
+@import 'self_card';
+@import 'employee-info';
+
+
+
+//modal
+@import 'modal/modal_confirm';
+
 

@@ -5,13 +5,16 @@
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
-	 "dev": "gulp",
-	 "build": "gulp build --build",
+    "dev": "gulp",
+    "build": "gulp build --build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "babel-loader": "^8.2.3",
     "browser-sync": "^2.27.7",
     "browsersync": "^0.0.1-security",
     "del": "^6.0.0",
@@ -38,5 +41,8 @@
     "webp-converter": "^2.2.3",
     "webpack": "^5.65.0",
     "webpack-stream": "^7.0.0"
+  },
+  "dependencies": {
+    "firebase": "^9.6.2"
   }
 }

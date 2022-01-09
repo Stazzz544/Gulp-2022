@@ -1,0 +1,13 @@
+.employee-info {
+	padding-top: 50px;
+	display: none;
+	height: 100%;
+	//background-color:rgba(72, 186, 187, 0.415);
+
+	&__wrapper {
+	}
+}
+
+.employee-info.active{
+	display: block;
+}

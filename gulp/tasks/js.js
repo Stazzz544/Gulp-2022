@@ -10,9 +10,24 @@ export const js = () => {
 		)
 		.pipe(webpack({
 			mode: app.isBuild ? 'production' : 'development',
+			devtool:"source-map",
 			output: {
 				filename: 'app.min.js'
-			}
+			},
+			// module: {
+			// 	rules: [
+			// 	  {
+			// 		 test: /\.m?js$/,
+			// 		 exclude: /(node_modules)/,
+			// 		 use: {
+			// 			loader: 'babel-loader',
+			// 			options: {
+			// 			  presets: ['@babel/preset-env']
+			// 			}
+			// 		 }
+			// 	  }
+			// 	]
+			//  },
 		}))
 		.pipe(app.gulp.dest(app.path.build.js))
 		.pipe(app.plugins.browsersync.stream());
