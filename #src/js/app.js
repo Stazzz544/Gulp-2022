@@ -4,16 +4,12 @@ import {isWebp} from "./modules/isWebp.js";
 import {select} from "./modules/selectHeader.js";
 import {changePage} from "./modules/changePage.js";
 import { initializeApp } from "firebase/app";
-
 import {
 	addListenerToArrOfElements,
 	getAllFieldFromEditCard,
 	showCompliteCard,
-	//addNewPersonCardToFirebase,
-	// editExistStaffCardAndReplaceItInFirebase,
 	clearAllFieldsInForm,
 	editOrDeleteBtn,
-	// getAllDataFromBase,
 	showStaffsOnPage,
 	showSortedStaffsOnPage,
 	deleteExistStaffCard,
@@ -23,9 +19,10 @@ import {
 	delTargetNormTable,
 	delTargetReceivedTable,
 	// firstStartApp,
+	//addNewPersonCardToFirebase,
+	// editExistStaffCardAndReplaceItInFirebase,
+	// getAllDataFromBase,
 } from "./modules/firebaseFunctions.js";
-
-
 import {
 	getDatabase,
 	ref,
@@ -35,42 +32,28 @@ import {
 	update,
 	remove
 } from "firebase/database";
+import { getAuth } from "firebase/auth";
+import { firebaseConfig } from "./modules/firebaseConfig.js";
+import {regisration, login, logout, getUserProfile, updateUserProfile} from "./modules/firebaseAuth.js";
 
 export let inicialState = {
 	company:{
 		staff:[],
 	}
 };	
-
 export let state = {}
-
-
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-	apiKey: "AIzaSyA2Zl9pHtMkovg39gTfIoYe6T0xTITqdp0",
-	authDomain: "warehouse-db-911e2.firebaseapp.com",
-	databaseURL: "https://warehouse-db-911e2-default-rtdb.europe-west1.firebasedatabase.app",
-	projectId: "warehouse-db-911e2",
-	storageBucket: "warehouse-db-911e2.appspot.com",
-	messagingSenderId: "811126571355",
-	appId: "1:811126571355:web:d5c7586895f4ae58139a7e",
-	measurementId: "G-YG5DJT58P8"
- };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);  //???????????????????????????????????????????
-
-
-
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth();
 export const db = getDatabase();
+
 
 isWebp();
 select();
-document.querySelector('header').onclick = changePage
 
 
-firstStartApp();
+
+
+
 tableOfnorms('#normsTable'); //первый рендер таблицы норм выдачи
 tableOfReceived('#receivedTable');//первый рендер таблицы полученных вещей
 
@@ -111,6 +94,19 @@ document.querySelector('#addFieldsToReceived').onclick = () => tableOfReceived('
 // Добавляет поле для ввода полученных вещей в карточке редактирования
 document.querySelector('#AddFieldsToReceivedInEdit').onclick = () => tableOfReceived('#getReceivedTable');
 //---------------------------------------------------
+//смена страницы новой карточки на страницу существующей
+document.querySelector('header').onclick = changePage
+//---------------------------------------------------
+//регистрация нового пользователя
+document.querySelector('#registrationBtn').onclick = () => regisration(startApp)
+//---------------------------------------------------
+//залогинится
+document.querySelector('#signInBtn').onclick = () => login(startApp)
+
+
+
+
+
 
 
 //Функция добавления новой карточки в базу данных
@@ -213,7 +209,7 @@ document.querySelector('#AddFieldsToReceivedInEdit').onclick = () => tableOfRece
 	})
 }
 
-async function firstStartApp(){
+async function startApp(){
 	state = await getAllDataFromBase()// асинхронная функция
 	showStaffsOnPage()// синхронная функция, выполнить после асинхронной
 }
