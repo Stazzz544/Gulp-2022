@@ -1,44 +1,9 @@
 *{
-	font-family:  Georgia, serif;
-	font-weight: 400;
-	scroll-behavior: smooth;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 html{
-	scroll-behavior: smooth;
 }
 
 main{
-	flex: 1 1;
 }
 
-.main-wrapper{
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-}
-
-.content{
-	flex: 1 1 auto;
-	display: flex;
-}
-
-.main-content-field{
-	//background: url('../img/bg/bg.jpg');
-	display: flex;
-	justify-content: center;
-	padding-bottom: 50px;
-	
-	background-color: rgb(214, 214, 214);
-}
-
-input[type='number']{
-	-moz-appearance:textfield;
-}

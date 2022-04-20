@@ -18,7 +18,7 @@ export const html = () => {
 			))
 
 		.pipe(app.plugins.if(
-				app.isBuild,
+				app.isBuild || app.isDev,
 				versionNumber({
 					'value': '%DT%',
 					'append': {
@@ -30,7 +30,7 @@ export const html = () => {
 						]
 					},
 					'output': {
-						'file': 'gulp/version.json'
+						'file': 'gulp/version.json' 
 					}
 				})
 			)

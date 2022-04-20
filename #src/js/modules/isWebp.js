@@ -1,5 +1,7 @@
 	//проверка поддержки webp, добавление класса webp или no-webp для HTML
-	export function isWebp() {
+	export default
+	
+	function isWebp() {
 		//проверка поддержки webp
 		function testWebP(callback) {
 	
@@ -16,4 +18,4 @@
 			});
 	}
 	
-	
+	isWebp();
